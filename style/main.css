@@ -69,6 +69,11 @@ body {
   right: 5px;
 }
 
+.text-box .hbd-chatbox span {
+  display: inline-block;; /* Ensures each span is on a new line */
+  opacity: 0; /* Fully transparent initially */
+}
+
 .five p {
   font-size: 2rem;
   left: 0;

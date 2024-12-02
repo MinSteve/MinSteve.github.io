@@ -26,8 +26,9 @@ const animationTimeline = () => {
     const hbd = document.getElementsByClassName("wish-hbd")[0];
 
     textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
-        .split("")
-        .join("</span><span>")}</span>`;
+        .split(" ")
+        .map(char => (char.trim() === "" ? "&nbsp;" : `<span>${char}</span>`)) // Wrap letters and preserve spaces
+        .join(" ")}</span>`;
 
     hbd.innerHTML = `<span>${hbd.innerHTML
         .split("")
@@ -96,10 +97,12 @@ const animationTimeline = () => {
     })
     .staggerTo(
         ".hbd-chatbox span",
-        1.5, {
+        1.8, {
             visibility: "visible",
+            opacity: 1,            // Fade in to full opacity
+            ease: "power1.inOut"     // Smooth easing for the animation
         },
-        0.05
+        0.2
     )
     .to(".fake-btn", 0.1, {
         backgroundColor: "rgb(127, 206, 248)",
